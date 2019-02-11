@@ -1,0 +1,110 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css');
+@import url('https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.2/dist/semantic.min.css');
+@import url('https://fonts.googleapis.com/css?family=Delius');
+
+* {
+  font-family: 'Delius', sans-serif !important;
+}
+
+body {
+  background-color: #111;
+}
+
+.ui.grid {
+  margin: 0;
+}
+
+i {
+  font-family: Icons !important;
+}
+
+
+.header {
+  font-family: 'Delius', sans-serif !important;
+  font-weight: 100 !important;
+  /* text-transform: uppercase !important; */
+}
+
+.box {
+  max-width: 600px;
+  position: relative;
+  top: 5vh !important;
+  margin: 0px auto !important;
+  border-radius: 10px !important;
+}
+
+.form-wrapper {
+  background-color: rgb(43, 43, 43);
+}
+
+.input-field {
+  background: #3a3a3a !important;
+  border: 2px dashed rgb(121, 121, 121) !important;
+  color: #eee !important;
+}
+
+.input-field:focus {
+  border: 2px dashed #aaa !important;
+  background: #454545 !important;
+}
+
+.input-field:hover {
+  border: 2px dashed #aaa !important;
+}
+
+.input-field:active {
+  border: 2px dashed #aaa !important;
+}
+
+.text{
+  color: #eee !important;
+}
+
+.text.default{
+  color: #bababa !important;
+}
+
+.menu.transition.visible{
+  border: 2px solid grey !important;
+  backface-visibility: hidden;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* input{
+  color: #eee !important;
+}
+
+.menu .item{
+  background-color: #3a3a3a !important;
+  color: #eee !important;
+  border: 0px !important;
+}
+
+.menu .item:hover{
+  background-color: #454545 !important;
+}
+
+.menu .item.selected{
+  background-color: #2a2a2a !important;
+} */
+
+.button{
+  position: relative;
+  left:50%;
+  transform:translate(-50%,0);
+  width:30% !important;
+}
+
+.custom-header{
+  display: inline-block;
+  position: relative;
+  margin-left: 50%;
+  transform: translate(-50%,0);
+  border: 2px dashed #555 !important;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  font-weight: 100;
+  background: #222;
+  padding: 7px 14px;
+}

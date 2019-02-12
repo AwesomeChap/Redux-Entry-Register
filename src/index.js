@@ -6,9 +6,11 @@ import store from './store';
 
 import "./styles.css";
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
+const RootApp = () => (
   <Provider store={store}>
     <App />
   </Provider>
-  , rootElement);
+);
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<RootApp/>, rootElement);

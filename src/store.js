@@ -5,7 +5,7 @@ import {composeWithDevTools} from 'redux-devtools-extension/logOnlyInProduction'
 
 const logger = store => next => action => {
   if (typeof action !== "function") {
-    console.log(`dispatching : ${action}`);
+    console.log(`dispatching : ${action.type} with ${JSON.stringify(action.payload || {})}`);
   }
   return next(action);
 };

@@ -4,12 +4,6 @@ const initialState = {
  people : [],
  isLoading: false,
  saveStatus : 'READY',
-//  person : {
-//    name: '',
-//    email : '',
-//    department : null,
-//    course : null,
-//  }
 }
 
 export default function(state = initialState, action){
@@ -29,7 +23,8 @@ export default function(state = initialState, action){
       })
     case SAVE_PEOPLE_SUCCESS : 
       return Object.assign(state,{},{
-        saveStatus : 'SAVED',
+        people : action.payload.people,
+        saveStatus : 'SAVED'
       })
     default : return state;
   }

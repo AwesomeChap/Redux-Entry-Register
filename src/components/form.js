@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import Select from './select';
 import {Err1, Err2} from './errors';
-import {connect} from 'react-redux';
-import {SavePeople} from '../actions/actions';
 
 class Form extends Component{
   constructor(props){
     super(props);
+    // console.log('from Form : '+JSON.stringify(this.props));
     this.state = {
       name : '',
       email: '',
@@ -30,9 +29,9 @@ class Form extends Component{
   handleSelect = (e) => {
     const selectedOption = e.target.value;
     const type = e.target.dataset.type;
-    if(type == 'Department') this.setState({department:selectedOption});
-    if(type == 'Course') this.setState({course:selectedOption});
-    console.log(`${type} : ${selectedOption}`);
+    if(type === 'Department') this.setState({department:selectedOption});
+    if(type === 'Course') this.setState({course:selectedOption});
+    // console.log(`${type} : ${selectedOption}`);
   }
 
   isEmail = mail => {
@@ -63,10 +62,9 @@ class Form extends Component{
     
     if(noErr){
       console.log('submitted');
-      console.log(this.state);
 
       const person = {name,email,department,course}
-      this.props.SavePeople(person);
+      this.props.onSavePeople(person);
       
       this.setState({
         name : '',
@@ -81,7 +79,7 @@ class Form extends Component{
         email_err2: null,
         toggleDep: true,
       },()=>{
-        console.log(this.state);
+        // console.log(this.state);
       })
     }else{
       this.setState({
@@ -92,8 +90,6 @@ class Form extends Component{
         email_err2: email_err2
       },()=>{
         console.log('not submitted');
-        console.log(this.state);
-        console.log('email is '+!this.state.email_err2)
       });
     }
 
@@ -133,19 +129,18 @@ class Form extends Component{
             {this.state.course_err1 ? <Err1 name="Course"/> : ''}
           </div>}
         </div>
-        {!this.state.isLoading ? (
-        <button type="submit" className="ui red button">Submit</button>
-        ): (
-        <button className="ui red button loading">Submit</button>
+        {this.props.saveStatus === 'READY' && (
+          <button type="submit" className="ui red button">Submit</button>
+        )}
+        {this.props.saveStatus === 'SAVING' && (
+          <button className="ui red button loading">Submit</button>
+        )}
+        {this.props.saveStatus === 'SAVED' && (
+          <button className="ui red button">Saved!</button>
         )}
       </form>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
- saveStatus : state.saveStatus,
- isLoading : state.isLoading 
-})
-
-export default connect(mapStateToProps,{SavePeople})(Form);
+export default Form;

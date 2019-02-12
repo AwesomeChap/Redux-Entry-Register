@@ -6,7 +6,7 @@ export default class Select extends Component{
   }
 
   componentDidMount(){
-    console.log('mounted')
+    // console.log('mounted')
   }
 
   handleChange = (e) => {
@@ -24,8 +24,8 @@ export default class Select extends Component{
         onChange={this.handleChange} 
         className="ui search selection inverted dropdown input-field"
       >
-        <div className="text"></div>
-        <option className="select-placeholder" value="select">Please Select {this.props.type}</option>
+        {/* <div className="text"></div> */}
+        <option className="select-placeholder" value="">Please Select {this.props.type}</option>
         {options}
       </select>
     );

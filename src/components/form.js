@@ -125,7 +125,7 @@ class Form extends Component{
             {this.state.department_err1 ? <Err1 name="Department"/> : ''}
           </div> 
           {this.state.department && <div className="field">
-            <Select value={this.state.course} handleSelect={this.handleSelect} options={courseOptions.Core} type={'Course'}/>
+            <Select value={this.state.course} handleSelect={this.handleSelect} options={this.state.department === 'Core' ? courseOptions.Core : courseOptions.Electives} type={'Course'}/>
             {this.state.course_err1 ? <Err1 name="Course"/> : ''}
           </div>}
         </div>

@@ -4,38 +4,49 @@ class People extends Component {
   constructor(props){
     super(props);
     // console.log(`From People : ${JSON.stringify(this.props)}`);
-    this.state = {
-      people : []
-    }
+    // this.state = {
+    //   people : []
+    // }
   }
 
-  componentDidMount(){
-    this.setState({people:this.props.people});
-    // console.log(`From People : ${this.props.people}`);
-  }
+  // componentDidMount(){
+  //   this.setState({people:this.props.people});
+  //   // console.log(`From People : ${this.props.people}`);
+  // }
 
-  componentDidUpdate(prevProps, prevState){
-    // this.setState({people:this.props.people});
-  }
+  // componentWillReceiveProps(update){
+  //   this.setState({people:update.people});
+  // }
 
   render() {
     const LoadingText = (
       <tr>
-        <div className="ui inverted segment">
-          <div className="ui active inverted loader"></div>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+        <div class="ui inverted red segment">
+          <div class="ui active fluid placeholder">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </tr>
+      // <tr>
+      //   <div className="ui inverted segment">
+      //     <div className="ui active inverted loader"></div>
+      //     <br/>
+      //     <br/>
+      //     <br/>
+      //     <br/>
+      //   </div>
+      // </tr>
     );
     const defaultText = (
       <tr>
         <td className="center aligned" colSpan="4" >Be the first person to get registered!</td>
       </tr>
     );
-    const people = this.state.people.map(person => {
+    const people = this.props.people.map(person => {
       const {name,email,department,course} = person;
       return(
         <tr>
@@ -51,8 +62,8 @@ class People extends Component {
         <pre></pre>
         <h2 className="custom-header" >People</h2>
         <table className="ui striped celled selectable red inverted table">
-          {this.props.isLoading && LoadingText}
-          {!this.props.isLoading && <>
+          {this.props.isLoading ? LoadingText : (
+            <>
             <thead>
               <tr>
                 <th>Name</th>
@@ -62,9 +73,10 @@ class People extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.people.length ? people : defaultText }
+              {this.props.people.length ? people : defaultText }
             </tbody>
-          </>}
+            </>
+          )}
         </table>
       </>
     );

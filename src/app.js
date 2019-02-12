@@ -23,19 +23,19 @@ const testData = [
 class App extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   people: []
-    // }
+    this.state = {
+      people: []
+    }
   }
 
   componentWillMount() {
     this.props.FetchPeople();
   }
 
-  // componentDidMount(){
-  //   const { people } = this.props;
-  //   this.setState({ people: people });
-  // }
+  componentDidMount(){
+    const { people } = this.props;
+    this.setState({ people: people });
+  }
 
   handleSave = (person) => {
     console.log('person received')
@@ -47,6 +47,7 @@ class App extends Component {
     }, () => {
       this.props.SavePeople(this.state.people);
     })
+    // this.props.SavePeople([...this.props.people,person]);
   }
 
   render() {
@@ -62,7 +63,6 @@ class App extends Component {
               <Form
                 saveStatus={saveStatus}
                 isLoading={isLoading}
-                people={this.props.people}
                 onSavePeople={this.handleSave}
               />
             </div>
@@ -72,7 +72,7 @@ class App extends Component {
               <People
                 isLoading={isLoading}
                 // people={testData}
-                people={this.props.people}
+                people={this.state.people}
                 // people = {JSON.parse(localStorage.people)}
               />
             {/* </div> */}
@@ -84,7 +84,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(`From Map : ${JSON.stringify(state)}`);
+  // alert(`From Map : ${JSON.stringify(state.people[0])}`);
   return {
     saveStatus: state.saveStatus,
     isLoading: state.isLoading,

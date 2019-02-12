@@ -105,3 +105,11 @@ i {
   background: #222;
   padding: 7px 14px;
 }
+
+div.line {
+  background-color: #db2828 !important;
+}
+
+.ui.placeholder{
+  background-color: #db2828 !important;
+}

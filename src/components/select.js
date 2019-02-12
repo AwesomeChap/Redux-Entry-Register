@@ -22,9 +22,9 @@ export default class Select extends Component{
         value={this.props.value} 
         data-type={this.props.type} 
         onChange={this.handleChange} 
-        className="ui search selection inverted dropdown input-field"
+        className="ui selection inverted dropdown input-field"
       >
-        {/* <div className="text"></div> */}
+        <div class="default text">Select choice</div>
         <option className="select-placeholder" value="">Please Select {this.props.type}</option>
         {options}
       </select>
